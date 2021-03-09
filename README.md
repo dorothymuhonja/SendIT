@@ -1,1 +1,1 @@
-# SendIt
+# SendIT
