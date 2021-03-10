@@ -29,7 +29,7 @@ A parcel delivery webapp where a user can track the delivery progress of their p
  
     virtualenv venv --python=python3
 
-    source venv/bin/activate
+    source virtual/bin/activate
 
 ### Install the required dependencies
     pip install -r requirements.txt
