@@ -1,8 +1,8 @@
 from flask import Flask
-
 app = Flask(__name__)
 
-from app.main import main
+from .main import views
 
-app.register_blueprint(main)
 
+
+  
