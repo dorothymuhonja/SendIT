@@ -10,7 +10,7 @@ def index():
     return render_template('index.html')
 
 @main.route('/parcel')
-@login_required
+# @login_required
 def parcel():
     form = ParcelForm()
     if form.validate_on_submit():

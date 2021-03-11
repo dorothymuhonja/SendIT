@@ -48,7 +48,9 @@ class Parcel(db.Model):
     def save_parcel(self):
         db.session.add(self)
         db.session.commit()
-    
-    def __repr__(self):
-        return '<Post {}>'.format(self.body)
+
+    @classmethod
+    def get_parcels(cls,id):
+        parcels = Parcel.query.filter_by(user_id=id).all()
+        return parcels
 

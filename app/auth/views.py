@@ -11,7 +11,7 @@ from werkzeug.security import generate_password_hash
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(email=form.email.data, username=form.username.data,pass_secure=generate_password_hash(form.password.data))
+        user = User(email=form.email.data, username=form.username.data,password=generate_password_hash(form.password.data))
 
         db.session.add(user)
         db.session.commit()
@@ -21,21 +21,23 @@ def register():
 
         return redirect(url_for('auth.login'))
         title = 'New Account'
-    return render_template('auth/register.html',registration_form=form)
+        form = RegistrationForm()
+    return render_template('auth/register.html',form=form)
 
 @auth.route('/login', methods=['GET','POST'])
 def login():
-    login_form = LoginForm()
-    if login_form.validate_on_submit():
-        user = User.query.filter_by(email=login_form.email.data).first()
-        if user is not None and user.verify_password(login_form.password.data):
-            login_user(user,login_form.remember.data)
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user is not None and user.verify_password(form.password.data):
+            
+            login_user(user,form.remember.data)
             return redirect(request.args.get('next') or url_for('main.index'))
 
-        flash('Invalid username or password')
+        flash('Invalid email or password')
 
     title = 'SendIT login'
-    return render_template('auth/login.html', login_form=login_form,title=title)
+    return render_template('auth/login.html', form=form,title=title)
 
 @auth.route('/logout')
 @login_required
