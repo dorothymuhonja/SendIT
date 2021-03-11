@@ -5,6 +5,7 @@ from ..models import Parcel
 from flask_login import login_required, current_user
 from .. import db
 
+
 @main.route('/')
 def index():
     return render_template('index.html')
