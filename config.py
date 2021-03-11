@@ -2,7 +2,7 @@ import os
 
 
 class Config:
-    DEBUG = True
+    SECRET_KEY = "infinity"
 
 
 class ProdConfig(Config):
