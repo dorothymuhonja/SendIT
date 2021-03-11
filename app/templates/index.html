@@ -5,8 +5,9 @@
     <div id="hello" class="col-lg-10" style="text-align: center">
       <h1>SEND<span style="color: #f97300">IT</span></h1>
       <p>Delivering Packages Since 2021</p>
-      <button class="btn btn-secondary btn-large">Sign Up</button>
-      <button class="btn btn-secondary btn-large btn-outline">Sign In</button>
+      <a href="{{url_for('auth.register')}}" class="btn btn-secondary btn-large">Sign Up</a>
+      <a href="{{url_for('auth.login')}}" class="btn btn-secondary btn-large">Sign In</a>
+
     </div>
     <div class="col-lg-1"></div>
   </div>
