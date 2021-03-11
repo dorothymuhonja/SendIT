@@ -2,7 +2,8 @@ import os
 
 
 class Config:
-    DEBUG = True
+    SECRET_KEY = "infinity"
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Moringa@localhost/sendit'
 
 
 class ProdConfig(Config):
