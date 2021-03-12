@@ -37,7 +37,7 @@ nav {
   .splash-body {
     background-image: url("/static/img/bg-splash.jpg");
     position: relative;
-    min-height: 600px%;
+    min-height: 600px;
     height: 100vh;
   }
   .fill-height{
@@ -56,7 +56,7 @@ nav {
     left: 50%;
     transform: translate(-50%, -50%);
     color: rgb(255, 255, 255); /*white text*/
-    font-weight: : bold;
+    font-weight:  bold;
   }
   
   

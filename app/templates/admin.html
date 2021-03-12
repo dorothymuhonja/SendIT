@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<ul>
+    {% for parcel in parcels %}
+    <li>{{ parcel.details }}</li>
+    <li>{{ parcel.status }}</li>
+    <li>{{ parcel.location }}</li>
+    <li>{{ parcel.timestamp }}</li>
+    <li>{{ parcel.recipient }}</li>
+    <li>{{ parcel.sender.username }}</li>
+    <li><a href="{{url_for('main.update_parcel', parcel_id=parcel.id)}}" class="btn btn-success">Update</a></li>
+    <li><a href="{{url_for('main.delete', parcel_id=parcel.id)}}" class="btn btn-danger">Cancel</a></li>
+
+    {% endfor %}
+
+</ul>
+{% endblock %}
