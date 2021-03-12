@@ -1,19 +1,35 @@
 {% extends 'base.html'%}
 {% block content %}
 
-<ul>
-    {% for parcel in parcels %}
-    <li>{{ parcel.details }}</li>
-    <li>{{ parcel.status }}</li>
-    <li>{{ parcel.location }}</li>
-    <li>{{ parcel.timestamp }}</li>
-    <li>{{ parcel.recipient }}</li>
-    <li>{{ parcel.sender.username }}</li>
-    <li><a href="{{url_for('main.update_parcel', parcel_id=parcel.id)}}" class="btn btn-success">Update</a></li>
-    <li><a href="{{url_for('main.delete', parcel_id=parcel.id)}}" class="btn btn-danger">Cancel</a></li>
-
+<table>
+    <thead>
+        <tr>
+            <th>Details</th>
+            <th>Sender</th>
+            <th>Reciever</th>
+            <th>Location</th>
+            <th>Status</th>
+            <th>Sent On</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            {%for parcel in parcels%}
+            <td>{{ parcel.sender.username }}</td>
+            <td>{{ parcel.recipient }}</td>
+            <td>{{ parcel.details }}</td>
+            <td>{{ parcel.location }}</td>
+            <td>{{ parcel.status }}</td>
+            <td>{{ parcel.timestamp }}</td>
+            <td>
+                <a href="{{url_for('main.update_parcel', parcel_id=parcel.id)}}" class="btn btn-success">Update</a>
+                <a href="{{url_for('main.delete', parcel_id=parcel.id)}}" class="btn btn-danger">Cancel</a>
+            </td>
+        </tr>
+    </tbody>
     {% endfor %}
 
-</ul>
+
 {% endblock %}
 
