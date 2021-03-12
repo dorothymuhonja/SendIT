@@ -10,7 +10,7 @@ from werkzeug.security import generate_password_hash
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(email=form.email.data, username=form.username.data,password_hash=generate_password_hash(form.password.data))
+        user = User(email=form.email.data, username=form.username.data, is_admin=form.is_admin.data, password_hash=generate_password_hash(form.password.data))
 
         db.session.add(user)
         db.session.commit()

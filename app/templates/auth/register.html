@@ -25,10 +25,18 @@
                 <span class="danger text-muted">[{{ error }}]</span>
                 {% endfor %}
             </div>
+            
             <div class="form-group">
                 {{ form.password_confirm.label(class="form-control-label") }} {{
                 form.password_confirm(class="form-control form-control-lg") }} {% for error in
                 form.password_confirm.errors %}
+                <span class="danger text-muted">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="form-check">
+                {{ form.is_admin.label(class="form-check-label") }} {{
+                form.is_admin(class="form-check-input") }} {% for error in
+                form.is_admin.errors %}
                 <span class="danger text-muted">[{{ error }}]</span>
                 {% endfor %}
             </div>
