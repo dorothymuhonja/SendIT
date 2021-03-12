@@ -17,6 +17,7 @@ class User(db.Model, UserMixin):
     password_hash = db.Column(db.String(128))
     parcels = db.relationship('Parcel', backref='sender', lazy='dynamic')
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'))
+    is_admin = db.Column(db.Boolean, default=False)
 
     @property
     def password(self):
@@ -42,13 +43,14 @@ class Role(db.Model):
 
     def __repr__(self):
 
-        return '<Post {}>'.format(self.is_admin)
+        return '<Role {}>'.format(self.is_admin)
 
 class Parcel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     details = db.Column(db.String(140))
     status = db.Column(db.String(20))
     location = db.Column(db.String(20))
+    recipient = db.Column(db.String(20))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
@@ -67,5 +69,5 @@ class Parcel(db.Model):
 
  
     def __repr__(self):
-        return '<Post {}>'.format(self.body)
+        return '<Parcel {}>'.format(self.details)
 
